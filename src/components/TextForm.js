@@ -77,7 +77,7 @@ function TextForm(props) {
         <div className="container">
           <h1>your text summery</h1>
           <p>
-            {text.split(" ").length} word and {text.length} charectors are in
+            {text.split(" ").length-1} word and {text.length} charectors are in
             you content
           </p>
           <p>
