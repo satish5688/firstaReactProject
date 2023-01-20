@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NavBar from "./components/NavBar";
+import TextForm from "./components/TextForm";
+// import AboutUs from "./components/AboutUs";
+// import Alert from "./Alert";
+import { useState } from "react";
 
 function App() {
+  const [mode,setMode]=useState('light')
+  const [Alert,setAlert]=useState(null)
+
+  const showAlert=(message,type)=>{
+    setAlert({
+      msg:message,
+      type:type
+    })
+  }
+  const toggleMode=()=>{
+    if (mode==='light'){
+      setMode('dark')
+      document.body.style.backgroundColor="#111940"
+      showAlert('Dark mode has been Enabled','Success')
+    }
+    else{
+      setMode('light')
+      document.body.style.backgroundColor="white"
+      showAlert('Light mode has been Enabled','Success')
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <NavBar title="TextUtils" Mode={mode}toggleMode={toggleMode}/>
+        <div className="container">
+          {/* <Alert/> */}
+          <TextForm heading="Enter the text to anylise" Mode={mode}/>
+        {/* <AboutUs/> */}
+        </div>
+
+      </>
   );
 }
 
