@@ -6,12 +6,15 @@ function TextForm(props) {
     console.log("upper case was clicked");
     const newText = text.toUpperCase();
     setText(newText);
+    props.showAlert('Converted to UpperCase','success')
   };
 
   const handleLoClick = () => {
     console.log("Lower case was clicked");
     const newText = text.toLowerCase();
     setText(newText);
+    props.showAlert('Converted to LowerCase','success')
+
   };
 
   const handleTiClick = () => {
@@ -20,10 +23,14 @@ function TextForm(props) {
       let titleWords = words.map(word => word[0].toUpperCase() + word.slice(1));
       let titleStr = titleWords.join(" ");
       setText(titleStr) 
+      props.showAlert('Converted to TitleCase','success')
+
   };
 
   const clearText=()=>{
     setText('')
+    props.showAlert('Text Removed','success')
+
   }
 
   const handleOnChange = (event) => {
